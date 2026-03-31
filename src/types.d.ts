@@ -1,4 +1,5 @@
 import type { DataNode } from 'antd/es/tree'
+import type { TreeProps } from 'antd'
 
 interface BaseNode {
   label?: string
@@ -23,7 +24,7 @@ export type ProcessedTreeData = ProcessedTreeNode[]
 
 export type TreeValue = { [ident: string]: string }
 
-export interface TreeWithPathProps {
+export interface TreeWithPathProps extends TreeProps {
   options?: TreeData
   onChange?: (value: TreeValue) => void
   value?: TreeValue

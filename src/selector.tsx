@@ -1,14 +1,20 @@
 import type { TreeWithPathProps } from './types';
 import { useTreeData, useTreeSelection, useTreeExpansion } from './lib.ts';
 import { Tree } from 'antd';
+import type { TreeProps } from 'antd';
 
-const fieldNames = {
+const fieldNames: TreeProps['fieldNames'] = {
   title: 'label',
   key: 'value',
   children: 'child',
 };
 
-export function TreeWithPath({ options, onChange, value }: TreeWithPathProps) {
+export function TreeWithPath({
+  options,
+  onChange,
+  value,
+  ...rest
+}: TreeWithPathProps) {
   const processedTreeData = useTreeData(options);
 
   const { selectedKeys, parentKeys, handleSelect } = useTreeSelection(
@@ -21,6 +27,7 @@ export function TreeWithPath({ options, onChange, value }: TreeWithPathProps) {
 
   return (
     <Tree
+      {...rest}
       expandedKeys={expandedKeys}
       fieldNames={fieldNames}
       onExpand={handleExpand}
