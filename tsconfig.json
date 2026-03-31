@@ -1,0 +1,6 @@
+{
+  "extends": "@nice-move/tsconfig/react.json",
+  "compilerOptions": {
+    "noEmit": true,
+  },
+}

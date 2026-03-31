@@ -1,0 +1,60 @@
+{
+  "name": "@dont-care/antd",
+  "version": "0.0.0",
+  "license": "Unlicense",
+  "author": {
+    "name": "Eric Chen"
+  },
+  "keywords": [],
+  "files": [
+    "src"
+  ],
+  "type": "module",
+  "scripts": {
+    "build": "vite build",
+    "dev": "vite",
+    "lint:eslint": "eslint . --quiet --fix --concurrency=auto",
+    "lint:staged": "nice-move lint staged",
+    "lint:type": "tsc -p tsconfig.json",
+    "lint:version": "syncpack lint",
+    "prepare": "nice-move git hooks",
+    "preview": "vite preview",
+    "version:pin": "syncpack fix"
+  },
+  "dependencies": {
+    "@ant-design/icons": "^6.1.1",
+    "ahooks": "^3.9.7",
+    "antd": "^6.3.5",
+    "react": "~18.3.1",
+    "react-dom": "~18.3.1",
+    "use-dark-mode-ts": "^1.0.2"
+  },
+  "devDependencies": {
+    "@bring-it/npm": "^0.9.3",
+    "@nice-move/all-in-react": "^0.7.3",
+    "@nice-move/syncpack-config": "^0.5.3",
+    "@types/react": "~18.3.28",
+    "@types/react-dom": "~19.2.3",
+    "@vitejs/plugin-react": "^6.0.1",
+    "eslint": "^9.39.4",
+    "garou": "^0.9.18",
+    "prettier": "~3.8.1",
+    "stylelint": "^16.26.1",
+    "syncpack": "^14.3.0",
+    "typescript": "~5.9.3",
+    "vite": "^8.0.3"
+  },
+  "packageManager": "pnpm@10.33.0",
+  "engines": {
+    "node": ">=24.0.0 || ^22.18.0",
+    "pnpm": "^10.28.2"
+  },
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
+  },
+  "prettier": "@nice-move/prettier-config",
+  "stylelint": {
+    "extends": "@nice-move/stylelint-config"
+  }
+}

@@ -1,0 +1,37 @@
+---
+description: react
+alwaysApply: true
+enabled: true
+updatedAt: 2026-01-12T07:24:19.460Z
+provider:
+---
+
+# React 开发规则
+
+## 代码风格要求
+
+1. 使用 ES2025 最新语法特性
+2. 遵循 React 最佳实践和钩子使用规范
+3. 使用 TypeScript 进行类型安全开发
+4. 组件必须使用函数式组件，避免类组件
+
+## 代码质量检查
+
+在代码生成完成后，必须执行以下命令：
+
+```bash
+pnpm run lint:type
+pnpm run lint:eslint
+```
+
+### 命令说明
+
+- `pnpm run lint:type`: 运行 TypeScript 类型检查，确保代码类型正确
+- `pnpm run lint:eslint`: 运行 ESLint 代码检查并自动修复可修复的问题
+
+### 注意事项
+
+- 如果 lint 检查发现问题，必须修复所有错误和警告
+- 不得禁用或忽略 ESLint 规则
+- 所有类型错误必须解决
+- 生成的代码必须能够通过所有 lint 检查

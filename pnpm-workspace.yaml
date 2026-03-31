@@ -1,0 +1,7 @@
+allowBuilds:
+  esbuild: false
+
+configDependencies:
+  pnpm-plugin-nice-move: 0.3.1+sha512-pIq4uYqy3pZFCcyuJeGSmhNr3u1MGfNZbjnVKtJWUfM/NfhEBzAvlkHmVG5WYhbqNQA3xuqqaJaiOUGIQvo3JA==
+
+shamefullyHoist: true
