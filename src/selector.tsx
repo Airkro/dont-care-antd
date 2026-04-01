@@ -6,7 +6,7 @@ import type { TreeProps } from 'antd';
 const fieldNames: TreeProps['fieldNames'] = {
   title: 'label',
   key: 'value',
-  children: 'child',
+  children: 'children',
 };
 
 export function TreeWithPath({

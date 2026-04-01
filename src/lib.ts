@@ -47,9 +47,9 @@ export const buildTree = (nodes?: TreeData): ProcessedTreeData | undefined => {
       enumerable: false,
     });
 
-    if (node.child) {
-      node.child.forEach((child) => {
-        processNode(child, node.key, [...parentPath, node], level + 1);
+    if (node.children) {
+      node.children.forEach((children) => {
+        processNode(children, node.key, [...parentPath, node], level + 1);
       });
     }
   };
@@ -74,8 +74,8 @@ const findNode = (
       return node;
     }
 
-    if (node.child) {
-      const found = findNode(node.child, value, ident);
+    if (node.children) {
+      const found = findNode(node.children, value, ident);
 
       if (found) {
         return found;
@@ -113,7 +113,7 @@ const resolveValuePath = (
             return true;
           }
 
-          if (node.child && findLevel(node.child, depth + 1)) {
+          if (node.children && findLevel(node.children, depth + 1)) {
             return true;
           }
         }
@@ -153,7 +153,7 @@ const resolveValuePath = (
     }
 
     path.push(node);
-    currentLevel = node.child ?? [];
+    currentLevel = node.children ?? [];
   }
 
   return path;

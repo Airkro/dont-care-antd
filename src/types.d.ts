@@ -5,7 +5,7 @@ interface BaseNode {
   label?: string
   value: string
   ident?: string
-  child?: TreeNode[]
+  children?: TreeNode[]
 }
 
 export interface TreeNode
@@ -14,7 +14,7 @@ export interface TreeNode
 export interface ProcessedTreeNode
   extends Omit<DataNode, 'children'>, BaseNode {
   key: string
-  child?: ProcessedTreeNode[]
+  children?: ProcessedTreeNode[]
   $path: { value: string; ident: string }[]
 }
 
