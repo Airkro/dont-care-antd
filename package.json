@@ -1,6 +1,6 @@
 {
   "name": "@dont-care/antd",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "license": "Unlicense",
   "author": {
     "name": "Eric Chen"
@@ -27,7 +27,8 @@
     "lint:version": "syncpack lint",
     "prepare": "nice-move git hooks",
     "preview": "vite preview",
-    "version:pin": "syncpack fix"
+    "version:pin": "syncpack fix",
+    "watch:type": "tsc -p tsconfig.json -w"
   },
   "dependencies": {
     "@ant-design/icons": "^6.1.1",
@@ -39,17 +40,17 @@
   },
   "devDependencies": {
     "@bring-it/npm": "^0.9.3",
-    "@nice-move/all-in-react": "^0.7.3",
+    "@nice-move/all-in-react": "^0.8.0",
     "@nice-move/syncpack-config": "^0.5.3",
     "@types/react": "~18.3.28",
-    "@types/react-dom": "~19.2.3",
+    "@types/react-dom": "~18.3.7",
     "@vitejs/plugin-react": "^6.0.1",
     "eslint": "^9.39.4",
-    "garou": "^0.9.18",
+    "garou": "^0.9.19",
     "prettier": "~3.8.1",
-    "stylelint": "^16.26.1",
+    "stylelint": "^17.6.0",
     "syncpack": "^14.3.0",
-    "typescript": "~5.9.3",
+    "typescript": "~6.0.2",
     "vite": "^8.0.3"
   },
   "packageManager": "pnpm@10.33.0",

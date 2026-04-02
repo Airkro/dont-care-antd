@@ -168,7 +168,7 @@ export const useTreeData = (options?: TreeData) => {
 export const useTreeSelection = (
   treeData: ProcessedTreeData | undefined,
   value: TreeValue | undefined,
-  onChange?: (value: TreeValue) => void,
+  onChange?: (value?: TreeValue) => void,
 ) => {
   const nodePath = useMemo(
     () => resolveValuePath(value, treeData ?? []),
@@ -187,7 +187,13 @@ export const useTreeSelection = (
   );
 
   const handleSelect = useCallback(
-    (keys: React.Key[]) => {
+    (keys: React.Key[], info?: { selected?: boolean }) => {
+      if (info?.selected === false) {
+        onChange?.();
+
+        return;
+      }
+
       if (keys[0] === undefined) {
         return;
       }
@@ -198,6 +204,14 @@ export const useTreeSelection = (
         return;
       }
 
+      const currentSelected = nodePath.at(-1);
+
+      if (currentSelected && currentSelected.value === node.value) {
+        onChange?.();
+
+        return;
+      }
+
       const newValue: TreeValue = {};
       node.$path.forEach(({ ident, value: nodeValue }) => {
         newValue[ident] = nodeValue;
@@ -205,7 +219,7 @@ export const useTreeSelection = (
 
       onChange?.(newValue);
     },
-    [treeData, onChange],
+    [treeData, onChange, nodePath],
   );
 
   return { selectedKeys, parentKeys, handleSelect };

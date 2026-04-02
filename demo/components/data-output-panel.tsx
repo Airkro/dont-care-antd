@@ -1,6 +1,6 @@
 import { Card, Space, Typography } from 'antd';
 import { CodeOutlined } from '@ant-design/icons';
-import type { DataOutputPanelProps, CodeBlockProps } from '../types.ts';
+import type { DataOutputPanelProps, CodeBlockProps } from '../types.d.ts';
 
 export function CodeBlock({ value }: CodeBlockProps) {
   return (

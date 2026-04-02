@@ -1,6 +1,6 @@
 import { Card, Typography, Space } from 'antd';
 import { TreeTypeSelector } from './tree-type-selector.tsx';
-import type { TreeControlPanelProps } from '../types.ts';
+import type { TreeControlPanelProps } from '../types.d.ts';
 
 const { Text } = Typography;
 

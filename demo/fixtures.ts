@@ -1,4 +1,4 @@
-import type { ExampleConfig, ExampleKey } from './types.ts';
+import type { ExampleConfig, ExampleKey } from './types.d.ts';
 
 // 统一的树形配置对象
 export const treeConfigs: Record<ExampleKey, ExampleConfig> = {

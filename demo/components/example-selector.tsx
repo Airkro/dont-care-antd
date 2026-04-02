@@ -3,11 +3,11 @@ import { CodeBlock } from './data-output-panel.tsx';
 import { useExampleHandler } from '../hooks/use-example-handler.ts';
 import { examples } from '../fixtures.ts';
 import type { TreeValue } from '../../src/types';
-import type { ExampleKey } from '../types.ts';
+import type { ExampleKey } from '../types.d.ts';
 
 interface ExampleSelectorProps {
-  onChange: (value: TreeValue) => void;
-  value: TreeValue;
+  onChange: (value?: TreeValue) => void;
+  value?: TreeValue;
   exampleKey: ExampleKey;
 }
 
@@ -26,7 +26,7 @@ export function ExampleSelector({
           value: JSON.stringify(item),
           label: <CodeBlock value={item} />,
         }))}
-        value={JSON.stringify(value)}
+        value={value ? JSON.stringify(value) : undefined}
       />
     </Card>
   );

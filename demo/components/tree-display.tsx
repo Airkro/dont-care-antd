@@ -1,10 +1,10 @@
 import { Card } from 'antd';
 import { TreeWithPath } from '../../src/selector.tsx';
-import type { TreeData, TreeValue } from '../../src/types';
+import type { TreeData, TreeValue } from '../../src/types.d.ts';
 
 interface TreeDisplayProps {
-  onChange: (value: TreeValue) => void;
-  value: TreeValue;
+  onChange: (value?: TreeValue) => void;
+  value?: TreeValue;
   options: TreeData | undefined;
 }
 

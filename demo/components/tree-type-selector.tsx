@@ -1,6 +1,6 @@
 import { Radio, Space } from 'antd';
 import { treeTypeOptions } from '../fixtures.ts';
-import type { ExampleKey } from '../types.ts';
+import type { ExampleKey } from '../types.d.ts';
 
 interface TreeTypeSelectorProps {
   onChange: (treeTypeKey: ExampleKey) => void;

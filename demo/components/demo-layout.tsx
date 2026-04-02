@@ -5,7 +5,7 @@ import { ExampleSelector } from './example-selector.tsx';
 import { TreeDisplay } from './tree-display.tsx';
 import { DataOutputPanel } from './data-output-panel.tsx';
 import type { TreeData, TreeValue } from '../../src/types';
-import type { ExampleKey } from '../types.ts';
+import type { ExampleKey } from '../types.d.ts';
 
 const { Title, Paragraph } = Typography;
 
@@ -15,8 +15,8 @@ const containerStyle: React.CSSProperties = {
 };
 
 interface DemoLayoutProps {
-  value: TreeValue;
-  onChange: (value: TreeValue) => void;
+  value?: TreeValue;
+  onChange: (value?: TreeValue) => void;
   options: TreeData | undefined;
   exampleKey: ExampleKey;
   setExampleKey: (key: ExampleKey) => void;
