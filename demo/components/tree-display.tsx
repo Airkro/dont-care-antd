@@ -1,6 +1,7 @@
 import { Card } from 'antd';
 import { TreeWithPath } from '../../src/selector.tsx';
 import type { TreeData, TreeValue } from '../../src/types.d.ts';
+import { TreeBox } from '../../src/tree-box.tsx';
 
 interface TreeDisplayProps {
   onChange: (value?: TreeValue) => void;
@@ -12,6 +13,7 @@ export function TreeDisplay({ onChange, value, options }: TreeDisplayProps) {
   return (
     <Card title="树形结构">
       <TreeWithPath onChange={onChange} options={options} value={value} />
+      <TreeBox onChange={onChange} options={options} value={value} />
     </Card>
   );
 }

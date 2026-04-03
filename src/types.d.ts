@@ -26,6 +26,6 @@ export type TreeValue = { [ident: string]: string }
 
 export interface TreeWithPathProps extends TreeProps {
   options?: TreeData
-  onChange?: (value?: TreeValue) => void
+  onChange?: (value?: TreeValue, prevKeys?: string[]) => void
   value?: TreeValue
 }

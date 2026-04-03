@@ -1,5 +1,5 @@
 /* eslint-disable no-param-reassign */
-import { useMemo, useCallback, useState } from 'react';
+import { useMemo, useCallback, useState, useRef, useEffect } from 'react';
 import { useDeepCompareEffect } from 'ahooks';
 import type {
   ProcessedTreeData,
@@ -168,8 +168,18 @@ export const useTreeData = (options?: TreeData) => {
 export const useTreeSelection = (
   treeData: ProcessedTreeData | undefined,
   value: TreeValue | undefined,
-  onChange?: (value?: TreeValue) => void,
+  onChange?: (value: TreeValue | undefined, prevKeys?: string[]) => void,
 ) => {
+  // 存储上一次的 value，用于取消选择时清除
+  const previousValueRef = useRef<TreeValue | undefined>(undefined);
+
+  // 更新 ref
+  useEffect(() => {
+    if (value !== undefined) {
+      previousValueRef.current = value;
+    }
+  }, [value]);
+
   const nodePath = useMemo(
     () => resolveValuePath(value, treeData ?? []),
     [value, treeData],
@@ -188,8 +198,13 @@ export const useTreeSelection = (
 
   const handleSelect = useCallback(
     (keys: React.Key[], info?: { selected?: boolean }) => {
+      // 获取上一次值的 keys
+      const prevKeys = previousValueRef.current
+        ? Object.keys(previousValueRef.current)
+        : undefined;
+
       if (info?.selected === false) {
-        onChange?.();
+        onChange?.(undefined, prevKeys);
 
         return;
       }
@@ -207,7 +222,7 @@ export const useTreeSelection = (
       const currentSelected = nodePath.at(-1);
 
       if (currentSelected && currentSelected.value === node.value) {
-        onChange?.();
+        onChange?.(undefined, prevKeys);
 
         return;
       }
@@ -217,7 +232,7 @@ export const useTreeSelection = (
         newValue[ident] = nodeValue;
       });
 
-      onChange?.(newValue);
+      onChange?.(newValue, prevKeys);
     },
     [treeData, onChange, nodePath],
   );
