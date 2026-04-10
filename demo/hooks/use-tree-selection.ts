@@ -16,7 +16,7 @@ export function useTreeSelection() {
     }
 
     setTreeData(config.options);
-    setValue(config.examples[0] ?? {});
+    setValue(undefined);
   }, [exampleKey]);
 
   const onChange = (newValue?: TreeValue) => {

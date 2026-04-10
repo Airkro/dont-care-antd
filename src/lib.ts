@@ -241,13 +241,28 @@ export const useTreeSelection = (
 };
 
 export const useTreeExpansion = (
+  treeData: ProcessedTreeData | undefined,
   parentKeys: React.Key[],
   value: TreeValue | undefined,
 ) => {
-  const [expandedKeys, setExpandedKeys] = useState<React.Key[]>([]);
+  const defaultKeyRef = useRef<React.Key[]>();
+
+  const [expandedKeys, setExpandedKeys] = useState<React.Key[] | undefined>(
+    undefined,
+  );
+
+  // 计算默认展开的 key
+  if (!defaultKeyRef.current?.length && treeData?.[0]?.key !== undefined) {
+    defaultKeyRef.current = [treeData[0].key];
+  }
 
   useDeepCompareEffect(() => {
-    setExpandedKeys((prev) => [...new Set([...prev, ...parentKeys])]);
+    if (value === undefined) {
+      // 重置为默认展开状态
+      setExpandedKeys(defaultKeyRef.current);
+    } else {
+      setExpandedKeys((prev) => [...new Set([...(prev ?? []), ...parentKeys])]);
+    }
   }, [value]);
 
   const handleExpand = useCallback((keys: React.Key[]) => {

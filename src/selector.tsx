@@ -23,7 +23,11 @@ export function TreeWithPath({
     onChange,
   );
 
-  const { expandedKeys, handleExpand } = useTreeExpansion(parentKeys, value);
+  const { expandedKeys, handleExpand } = useTreeExpansion(
+    processedTreeData,
+    parentKeys,
+    value,
+  );
 
   return (
     <Tree
