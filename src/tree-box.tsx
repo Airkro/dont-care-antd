@@ -1,8 +1,11 @@
 import type { TreeWithPathProps } from './types';
 import { TreeWithPath } from './selector.tsx';
-import { Card, Button } from 'antd';
+import { Card, Button, Typography } from 'antd';
 import type { CardProps, ButtonProps } from 'antd';
 import { CloseOutlined } from '@ant-design/icons';
+import { forwardRef } from 'react';
+
+const { Text } = Typography;
 
 const CardStyles: CardProps['styles'] = {
   body: {
@@ -23,35 +26,48 @@ export interface TreeBoxProps extends TreeWithPathProps {
   clearable?: boolean;
 }
 
-export function TreeBox({
-  height = 300,
-  clearable = true,
-  onChange,
-  value,
-  ...rest
-}: TreeBoxProps) {
-  const handleClear = () => {
-    const prevKeys = value ? Object.keys(value) : undefined;
-    onChange?.(undefined, prevKeys);
-  };
+export const TreeBox = forwardRef(
+  (
+    {
+      height = 300,
+      clearable = true,
+      onChange,
+      value,
+      options,
+      ...rest
+    }: TreeBoxProps,
+    _,
+  ) => {
+    const handleClear = () => {
+      const prevKeys = value ? Object.keys(value) : undefined;
+      onChange?.(undefined, prevKeys);
+    };
 
-  return (
-    <Card styles={CardStyles}>
-      {clearable ? (
-        <Button
-          icon={<CloseOutlined />}
-          onClick={handleClear}
-          size="small"
-          style={ButtonStyles}
-          type="text"
-        />
-      ) : undefined}
-      <TreeWithPath
-        {...rest}
-        height={height}
-        onChange={onChange}
-        value={value}
-      />
-    </Card>
-  );
-}
+    return (
+      <Card styles={CardStyles}>
+        {clearable ? (
+          <Button
+            key="-"
+            icon={<CloseOutlined />}
+            onClick={handleClear}
+            size="small"
+            style={ButtonStyles}
+            type="text"
+          />
+        ) : undefined}
+        {options?.length ? (
+          <TreeWithPath
+            {...rest}
+            options={options}
+            key="+"
+            height={height}
+            onChange={onChange}
+            value={value}
+          />
+        ) : (
+          <Text type="secondary">暂无可选项</Text>
+        )}
+      </Card>
+    );
+  },
+);

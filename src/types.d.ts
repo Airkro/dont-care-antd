@@ -24,7 +24,7 @@ export type ProcessedTreeData = ProcessedTreeNode[]
 
 export type TreeValue = { [ident: string]: string }
 
-export interface TreeWithPathProps extends TreeProps {
+export interface TreeWithPathProps extends Omit<TreeProps, 'treeData'> {
   options?: TreeData
   onChange?: (value?: TreeValue, prevKeys?: string[]) => void
   value?: TreeValue
