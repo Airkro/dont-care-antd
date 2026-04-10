@@ -26,7 +26,7 @@ export interface TreeBoxProps extends TreeWithPathProps {
   clearable?: boolean;
 }
 
-export const TreeBoxwithPath = forwardRef(
+export const TreeBoxWithPath = forwardRef(
   (
     {
       height = 300,
