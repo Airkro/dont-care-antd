@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { treeConfigs } from '../fixtures.ts';
 import type { ExampleKey } from '../types.ts';
-import type { TreeData, TreeValue } from '../../src/types.d.ts';
+import type { TreeData, TreeValue } from '../../src/tree/types.d.ts';
 
 export function useTreeSelection() {
   const [exampleKey, setExampleKey] = useState<ExampleKey>('organization');

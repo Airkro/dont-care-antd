@@ -1,9 +1,9 @@
 import { Card, Segmented, type SegmentedProps } from 'antd';
 import { useState } from 'react';
-import type { TreeData, TreeValue } from '../../src/types.d.ts';
-import { TreeBoxWithPath } from '../../src/tree-box.tsx';
-import { TreeSelectWithPath } from '../../src/tree-select.tsx';
-import { TreeWithPath } from '../../src/tree.tsx';
+import type { TreeData, TreeValue } from '../../src/tree/types.d.ts';
+import { TreeBoxWithPath } from '../../src/tree/tree-box.tsx';
+import { TreeSelectWithPath } from '../../src/tree/tree-select.tsx';
+import { TreeWithPath } from '../../src/tree/tree.tsx';
 
 type TreeType = 'select' | 'tree' | 'box';
 

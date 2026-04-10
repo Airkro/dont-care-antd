@@ -2,7 +2,7 @@ import { Card, Radio } from 'antd';
 import { CodeBlock } from './data-output-panel.tsx';
 import { useExampleHandler } from '../hooks/use-example-handler.ts';
 import { examples } from '../fixtures.ts';
-import type { TreeValue } from '../../src/types';
+import type { TreeValue } from '../../src/tree/types';
 import type { ExampleKey } from '../types.d.ts';
 
 interface ExampleSelectorProps {
