@@ -1,5 +1,5 @@
 import type { TreeWithPathProps } from './types';
-import { TreeWithPath } from './selector.tsx';
+import { TreeWithPath } from './tree.tsx';
 import { Card, Button, Typography } from 'antd';
 import type { CardProps, ButtonProps } from 'antd';
 import { CloseOutlined } from '@ant-design/icons';
@@ -26,7 +26,7 @@ export interface TreeBoxProps extends TreeWithPathProps {
   clearable?: boolean;
 }
 
-export const TreeBox = forwardRef(
+export const TreeBoxwithPath = forwardRef(
   (
     {
       height = 300,
