@@ -1,8 +1,11 @@
-import type { Rule } from 'antd/es/form';
 import { Form } from 'antd';
-import { getValueFromEvent, getValueProps, transformRules } from './utils.ts';
-
-export type Separate = (string | string[])[];
+import {
+  getValueFromEvent,
+  getValueProps,
+  transformRules,
+  type Separate,
+} from './utils.ts';
+import type { ComponentProps } from 'react';
 
 const { Item, useFormInstance } = Form;
 
@@ -11,27 +14,17 @@ export function FormItemSeparate({
   rules,
   children,
   ...props
-}: {
-  separate: Separate;
-  rules: Rule[];
-  children?: React.ReactNode;
-}) {
+}: { separate: Separate } & ComponentProps<typeof Item>) {
   const form = useFormInstance();
 
   return (
-    <>
-      <Item
-        {...props}
-        getValueFromEvent={getValueFromEvent(form, separate)}
-        getValueProps={getValueProps(form, separate)}
-        name="$.fake"
-        rules={transformRules(form, separate, rules)}
-      >
-        {children}
-      </Item>
-      {separate.map((name) => (
-        <Item key={String(name)} hidden={true} name={name} noStyle={true} />
-      ))}
-    </>
+    <Item
+      {...props}
+      getValueFromEvent={getValueFromEvent(form, separate)}
+      getValueProps={getValueProps(form, separate)}
+      rules={transformRules(form, separate, rules)}
+    >
+      {children}
+    </Item>
   );
 }

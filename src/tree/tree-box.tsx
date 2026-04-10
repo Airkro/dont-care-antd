@@ -1,4 +1,4 @@
-import type { TreeWithPathProps } from './types';
+import type { TreeBoxWithPathProps } from './types';
 import { TreeWithPath } from './tree.tsx';
 import { Card, Button, Typography } from 'antd';
 import type { CardProps, ButtonProps } from 'antd';
@@ -21,11 +21,6 @@ const ButtonStyles: ButtonProps['style'] = {
   zIndex: 1,
 };
 
-export interface TreeBoxProps extends TreeWithPathProps {
-  /** 是否显示清空按钮 */
-  clearable?: boolean;
-}
-
 export const TreeBoxWithPath = forwardRef(
   (
     {
@@ -35,7 +30,7 @@ export const TreeBoxWithPath = forwardRef(
       value,
       options,
       ...rest
-    }: TreeBoxProps,
+    }: TreeBoxWithPathProps,
     _,
   ) => {
     const handleClear = () => {

@@ -1,6 +1,6 @@
 import type { TreeSelectProps } from 'antd';
 import { TreeSelect } from 'antd';
-import type { TreeWithPathProps } from './types';
+import type { TreeSelectWithPathProps } from './types';
 import { useTreeData, useTreeSelection, useTreeExpansion } from './lib.ts';
 
 const fieldNames: TreeSelectProps['fieldNames'] = {
@@ -8,15 +8,6 @@ const fieldNames: TreeSelectProps['fieldNames'] = {
   value: 'value',
   children: 'children',
 };
-
-export interface TreeSelectWithPathProps extends Omit<
-  TreeSelectProps,
-  'treeData' | 'onChange' | 'value'
-> {
-  options?: TreeWithPathProps['options'];
-  onChange?: TreeWithPathProps['onChange'];
-  value?: TreeWithPathProps['value'];
-}
 
 const style = {
   width: '100%',

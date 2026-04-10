@@ -1,21 +1,60 @@
 import type { FormInstance } from 'antd';
 import type { FormItemProps, Rule } from 'antd/es/form';
 
-export type Separate = (string | string[])[];
+export type Separate = Record<string, string> | string[];
+
+const toNamePath = (path: string): string[] => path.split('.');
+
+type Entry = { key: string; namePath: string[] };
+
+const getEntries = (separate: Separate): Entry[] => {
+  if (Array.isArray(separate)) {
+    return separate.map((path, index) => ({
+      key: String(index),
+      namePath: toNamePath(path),
+    }));
+  }
+
+  return Object.entries(separate).map(([key, path]) => ({
+    key,
+    namePath: toNamePath(path),
+  }));
+};
+
+const isUndefined = (v: unknown): v is undefined => v === undefined;
+
+const getFieldValue = (form: FormInstance, entries: Entry[]) =>
+  entries.map(({ namePath }) => form.getFieldValue(namePath));
+
+const isAllUndefined = (values: unknown[]): boolean =>
+  values.every(isUndefined);
 
 export const transformRules = (
   form: FormInstance,
   separate: Separate,
   rules: Rule[] = [],
 ): Rule[] => {
+  const entries = getEntries(separate);
+  const isArray = Array.isArray(separate);
+
   const mapped = rules.map((rule) => {
     if (typeof rule === 'object' && rule) {
       return {
         ...rule,
         transform: () => {
-          const val = separate.map((name) => form.getFieldValue(name));
+          const values = getFieldValue(form, entries);
 
-          return val.every((item) => item === undefined) ? undefined : val;
+          if (isAllUndefined(values)) {
+            return undefined;
+          }
+
+          if (isArray) {
+            return values;
+          }
+
+          return Object.fromEntries(
+            entries.map(({ key }, i) => [key, values[i]]),
+          );
         },
       };
     }
@@ -32,25 +71,36 @@ type GetValueProps = (
 ) => FormItemProps['getValueProps'];
 
 export const getValueProps: GetValueProps = (form, separate) => {
-  return () => {
-    const value = separate.map((name) => form.getFieldValue(name));
+  const entries = getEntries(separate);
+  const isArray = Array.isArray(separate);
 
-    if (value.every((v) => v === undefined)) {
+  return () => {
+    const values = getFieldValue(form, entries);
+
+    if (isAllUndefined(values)) {
       return {};
     }
 
-    return { value };
+    if (isArray) {
+      return { value: values };
+    }
+
+    return {
+      value: Object.fromEntries(entries.map(({ key }, i) => [key, values[i]])),
+    };
   };
 };
 
 export const getValueFromEvent = (
   form: FormInstance,
   separate: Separate,
-): ((values: Record<keyof Separate, unknown>) => unknown) => {
-  return (values: Record<keyof Separate, unknown>) => {
-    const fieldData = separate.map((name, index) => ({
-      name,
-      value: values?.[index],
+): ((values: Record<string, unknown>) => unknown) => {
+  const entries = getEntries(separate);
+
+  return (values: Record<string, unknown>) => {
+    const fieldData = entries.map(({ key, namePath }) => ({
+      name: namePath,
+      value: values?.[key],
     }));
 
     form.setFields(fieldData);
