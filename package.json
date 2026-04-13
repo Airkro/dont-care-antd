@@ -36,6 +36,7 @@
     "antd": "^6.3.5",
     "react": "~18.3.1",
     "react-dom": "~18.3.1",
+    "react-router-dom": "^7.14.0",
     "use-dark-mode-ts": "^1.0.2"
   },
   "devDependencies": {
