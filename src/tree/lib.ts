@@ -11,7 +11,7 @@ import type {
 /**
  * 构建树结构，为每个节点添加 key 和路径信息
  */
-export const buildTree = (nodes?: TreeData): ProcessedTreeData | undefined => {
+const buildTree = (nodes?: TreeData): ProcessedTreeData | undefined => {
   if (!nodes) {
     return;
   }

@@ -5,12 +5,14 @@ import { Page as SeparatePage } from './separate/page.tsx';
 import { Page as HomePage } from './home/page.tsx';
 import 'antd/dist/reset.css';
 import { StrictMode } from 'react';
+// import { ThemeWrapper } from './tree/theme-wrapper.tsx';
 
 const root = document.querySelector('#root');
 
 if (root) {
   createRoot(root).render(
     <StrictMode>
+      {/* <ThemeWrapper> */}
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<HomePage />} />
@@ -19,6 +21,7 @@ if (root) {
           <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>
       </BrowserRouter>
+      {/* </ThemeWrapper> */}
     </StrictMode>,
   );
 }

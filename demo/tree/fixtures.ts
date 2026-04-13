@@ -297,9 +297,9 @@ export const treeTypeOptions = Object.entries(treeConfigs).map(
   }),
 );
 
-export const treeOptions = Object.fromEntries(
-  Object.entries(treeConfigs).map(([key, config]) => [key, config.options]),
-);
+// const treeOptions = Object.fromEntries(
+//   Object.entries(treeConfigs).map(([key, config]) => [key, config.options]),
+// );
 
 export const examples = Object.fromEntries(
   Object.entries(treeConfigs).map(([key, config]) => [key, config.examples]),

@@ -10,21 +10,25 @@ import type { ComponentProps } from 'react';
 const { Item, useFormInstance } = Form;
 
 export function FormItemSeparate({
+  element: Ele = Item,
   separate,
   rules,
   children,
   ...props
-}: { separate: Separate } & ComponentProps<typeof Item>) {
+}: {
+  separate: Separate;
+  element?: React.ElementType;
+} & ComponentProps<typeof Item>) {
   const form = useFormInstance();
 
   return (
-    <Item
+    <Ele
       {...props}
       getValueFromEvent={getValueFromEvent(form, separate)}
       getValueProps={getValueProps(form, separate)}
       rules={transformRules(form, separate, rules)}
     >
       {children}
-    </Item>
+    </Ele>
   );
 }

@@ -1,0 +1,28 @@
+{
+  "name": "@dont-care/antd",
+  "version": "0.5.1",
+  "license": "Unlicense",
+  "author": {
+    "name": "Eric Chen"
+  },
+  "keywords": [],
+  "homepage": "https://github.com/Airkro/dont-care-antd",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Airkro/dont-care-antd.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Airkro/dont-care-antd/issues"
+  },
+  "type": "module",
+  "dependencies": {
+    "@ant-design/icons": "catalog:ali",
+    "ahooks": "catalog:ali",
+    "antd": "catalog:ali",
+    "react": "catalog:react"
+  },
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
+  }
+}

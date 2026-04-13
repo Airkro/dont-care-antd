@@ -1,4 +1,8 @@
-import type { TreeData, TreeValue, TreeNode } from '../src/types.d.ts'
+import type {
+  TreeData,
+  TreeValue,
+  TreeNode,
+} from '@dont-care/antd/tree/types.d.ts'
 
 export type { TreeData, TreeNode, TreeValue }
 

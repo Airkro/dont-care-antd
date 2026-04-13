@@ -1,7 +1,21 @@
 allowBuilds:
   esbuild: false
 
+packages:
+  - src
+  - demo
+
 configDependencies:
   pnpm-plugin-nice-move: 0.3.2+sha512-sQYAR3kZQzVoRUlhGm0BqxKULAeGmr6Xy519HuevZjIq37XTL+1P+5pWQ603T651dwzyOxjUef1hOnEHPjxPWw==
 
 shamefullyHoist: true
+
+catalogs:
+  ali:
+    '@ant-design/icons': ^6.1.1
+    ahooks: ^3.9.7
+    antd: ^6.3.5
+  react:
+    react: 18.3.1
+    react-dom: 18.3.1
+    react-router-dom: ^7.14.0

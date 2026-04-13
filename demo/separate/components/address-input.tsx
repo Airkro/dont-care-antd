@@ -1,6 +1,6 @@
 import { Input, Space } from 'antd';
 
-export interface AddressValue {
+interface AddressValue {
   city?: string;
   street?: string;
 }

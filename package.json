@@ -1,22 +1,11 @@
 {
-  "name": "@dont-care/antd",
-  "version": "0.4.2",
-  "license": "Unlicense",
+  "private": true,
+  "name": "@dont-care/repos",
+  "version": "0.0.0",
+  "license": "UNLICENSED",
   "author": {
     "name": "Eric Chen"
   },
-  "keywords": [],
-  "homepage": "https://github.com/Airkro/dont-care-antd",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/Airkro/dont-care-antd.git"
-  },
-  "bugs": {
-    "url": "https://github.com/Airkro/dont-care-antd/issues"
-  },
-  "files": [
-    "src"
-  ],
   "type": "module",
   "scripts": {
     "build": "vite build",
@@ -30,15 +19,6 @@
     "version:pin": "syncpack fix",
     "watch:type": "tsc -p tsconfig.json -w"
   },
-  "dependencies": {
-    "@ant-design/icons": "^6.1.1",
-    "ahooks": "^3.9.7",
-    "antd": "^6.3.5",
-    "react": "~18.3.1",
-    "react-dom": "~18.3.1",
-    "react-router-dom": "^7.14.0",
-    "use-dark-mode-ts": "^1.0.2"
-  },
   "devDependencies": {
     "@bring-it/npm": "^0.9.3",
     "@nice-move/all-in-react": "^0.8.2",
@@ -48,23 +28,23 @@
     "@vitejs/plugin-react": "^6.0.1",
     "eslint": "^9.39.4",
     "garou": "^0.9.21",
-    "prettier": "~3.8.1",
+    "prettier": "~3.8.2",
     "stylelint": "^17.6.0",
     "syncpack": "^14.3.0",
     "typescript": "~6.0.2",
     "vite": "^8.0.8"
   },
+  "peerDependencies": {
+    "@dont-care/antd": "workspace:^",
+    "@dont-care/demo": "workspace:^"
+  },
   "packageManager": "pnpm@10.33.0",
   "engines": {
     "node": ">=24.0.0 || ^22.18.0",
-    "pnpm": "^10.28.2"
+    "pnpm": "^10.33.0"
   },
-  "publishConfig": {
-    "access": "public",
-    "registry": "https://registry.npmjs.org/"
-  },
-  "prettier": "@nice-move/prettier-config",
+  "prettier": "@nice-move/all-in-react/prettier",
   "stylelint": {
-    "extends": "@nice-move/stylelint-config"
+    "extends": "@nice-move/all-in-react/stylelint"
   }
 }

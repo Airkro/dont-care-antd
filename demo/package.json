@@ -1,0 +1,14 @@
+{
+  "private": true,
+  "name": "@dont-care/demo",
+  "version": "0.0.0",
+  "dependencies": {
+    "@ant-design/icons": "catalog:ali",
+    "ahooks": "catalog:ali",
+    "antd": "catalog:ali",
+    "react": "catalog:react",
+    "react-dom": "catalog:react",
+    "react-router-dom": "catalog:react",
+    "use-dark-mode-ts": "^1.0.2"
+  }
+}
