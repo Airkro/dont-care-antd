@@ -1,8 +1,8 @@
 import { Card, Segmented, type SegmentedProps } from 'antd';
-import type { TreeData, TreeValue } from '../../src/tree/types.d.ts';
-import { TreeBoxWithPath } from '../../src/tree/tree-box.tsx';
-import { TreeSelectWithPath } from '../../src/tree/tree-select.tsx';
-import { TreeWithPath } from '../../src/tree/tree.tsx';
+import type { TreeData, TreeValue } from '../../../src/tree/types.d.ts';
+import { TreeBoxWithPath } from '../../../src/tree/tree-box.tsx';
+import { TreeSelectWithPath } from '../../../src/tree/tree-select.tsx';
+import { TreeWithPath } from '../../../src/tree/tree.tsx';
 import { useLocalStorageState } from 'ahooks';
 
 type TreeType = 'select' | 'tree' | 'box';

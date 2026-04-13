@@ -1,8 +1,8 @@
 import { useState, useEffect } from 'react';
 import { useLocalStorageState } from 'ahooks';
 import { treeConfigs } from '../fixtures.ts';
-import type { ExampleKey } from '../types.ts';
-import type { TreeData, TreeValue } from '../../src/tree/types.d.ts';
+import type { ExampleKey } from '../types.d.ts';
+import type { TreeData, TreeValue } from '../../../src/tree/types.d.ts';
 
 export function useTreeSelection() {
   const [exampleKey, setExampleKey] = useLocalStorageState<ExampleKey>(

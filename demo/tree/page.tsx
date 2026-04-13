@@ -1,7 +1,7 @@
 import { DemoLayout } from './components/demo-layout.tsx';
 import { useTreeSelection } from './hooks/use-tree-selection.ts';
 
-export function App() {
+export function Page() {
   const { value, onChange, options, exampleKey, setExampleKey } =
     useTreeSelection();
 

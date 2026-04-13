@@ -4,7 +4,7 @@ import { TreeControlPanel } from './tree-control-panel.tsx';
 import { ExampleSelector } from './example-selector.tsx';
 import { TreeDisplay } from './tree-display.tsx';
 import { DataOutputPanel } from './data-output-panel.tsx';
-import type { TreeData, TreeValue } from '../../src/tree/types';
+import type { TreeData, TreeValue } from '../../../src/tree/types';
 import type { ExampleKey } from '../types.d.ts';
 
 const { Title, Paragraph } = Typography;

@@ -1,4 +1,4 @@
-import type { TreeValue } from '../../src/tree/types.d.ts';
+import type { TreeValue } from '../../../src/tree/types.d.ts';
 
 /**
  * 处理示例数据选择的 hook
