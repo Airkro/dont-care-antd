@@ -252,9 +252,15 @@ export const useTreeExpansion = (
   );
 
   // 计算默认展开的 key
-  if (!defaultKeyRef.current?.length && treeData?.[0]?.key !== undefined) {
-    defaultKeyRef.current = [treeData[0].key];
-  }
+  useEffect(() => {
+    if (
+      !defaultKeyRef.current?.length &&
+      treeData?.length === 1 &&
+      treeData?.[0]?.key !== undefined
+    ) {
+      defaultKeyRef.current = [treeData[0].key];
+    }
+  }, [treeData]);
 
   useDeepCompareEffect(() => {
     if (value === undefined) {

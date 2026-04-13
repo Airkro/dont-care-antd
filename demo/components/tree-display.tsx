@@ -1,9 +1,9 @@
 import { Card, Segmented, type SegmentedProps } from 'antd';
-import { useState } from 'react';
 import type { TreeData, TreeValue } from '../../src/tree/types.d.ts';
 import { TreeBoxWithPath } from '../../src/tree/tree-box.tsx';
 import { TreeSelectWithPath } from '../../src/tree/tree-select.tsx';
 import { TreeWithPath } from '../../src/tree/tree.tsx';
+import { useLocalStorageState } from 'ahooks';
 
 type TreeType = 'select' | 'tree' | 'box';
 
@@ -34,7 +34,9 @@ const types: SegmentedProps['options'] = [
 ];
 
 export function TreeDisplay({ onChange, value, options }: TreeDisplayProps) {
-  const [treeType, setTreeType] = useState<TreeType>('select');
+  const [treeType, setTreeType] = useLocalStorageState<TreeType>('treeType', {
+    defaultValue: 'select',
+  });
   const Ele = TREE_COMPONENTS[treeType];
 
   return (
